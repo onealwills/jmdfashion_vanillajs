@@ -38,6 +38,7 @@ app.use(express.static(path.join(__dirname, '/../frontend')));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/../frontend/index.html'));
 });
+// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) =>{
   const status = err.name && err.name === 'ValidationError'? 400: 500;
   res.status(status).send({message: err.message});
