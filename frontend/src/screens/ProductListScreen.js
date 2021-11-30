@@ -69,8 +69,8 @@ const ProductListScreen = {
               <td>${product.category}</td>
               <td>${product.brand}</td>
               <td>
-              <button id="${product._id}" class="edit-button">Edit</button>
-              <button id="${product._id}" class="delete-button">Delete</button>
+                <button id="${product._id}" class="edit-button">Edit</button>
+                <button id="${product._id}" class="delete-button">Delete</button>
               </td>
             </tr>
             `

@@ -4,28 +4,48 @@ import axios from "axios";
 import { apiUrl } from "./config";
 import { getUserInfo } from "./localStorage";
 
-export const getProducts = async ({ searchKeyword = '' }) => {
-  try {
-    let queryString = '?';
-    if (searchKeyword) queryString += `searchKeyword=${searchKeyword}&`;
+// export const getProducts = async ({ searchKeyword = '' }) => {
+//   try {
+//     let queryString = '?';
+//     if (searchKeyword) queryString += `searchKeyword=${searchKeyword}&`;
 
-    const response = await axios({
-      url: `${apiUrl}/api/products${queryString}`,
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    if (response.statusText !== 'OK') {
-      throw new Error(response.data.message);
+//     const response = await axios({
+//       url: `${apiUrl}/api/products${queryString}`,
+//       method: 'GET',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     });
+//     if (response.statusText !== 'OK') {
+//       throw new Error(response.data.message);
+//     }
+//     return response.data;
+//   } catch (err) {
+//     console.log(err);
+//     return { error: err.response.data.message || err.message };
+//   }
+// };
+export const getProducts = async () => {
+    try{
+        // eslint-disable-next-line no-unused-vars
+        const response = await axios({
+            url: `${apiUrl}/api/products`,
+            method : 'GET',
+            headers : {
+                'Content-Type': 'application/json',
+            },
+        });
+        if(response.statusText !=='OK'){
+            throw new Error(response.data.message);
+        }
+        return response.data;
+    
+    } catch (err) {
+        console.log(err);
+        return {error: err.response.data.message || err.message };
+
     }
-    return response.data;
-  } catch (err) {
-    console.log(err);
-    return { error: err.response.data.message || err.message };
-  }
 };
-
 
 // eslint-disable-next-line import/prefer-default-export
 export const getProduct = async (id) => {
@@ -109,6 +129,7 @@ export const deleteProduct = async (productId) => {
     return { error: err.response.data.message || err.message };
   }
 };
+
 export const updateProduct = async (product) => {
   try {
     const { token } = getUserInfo();
