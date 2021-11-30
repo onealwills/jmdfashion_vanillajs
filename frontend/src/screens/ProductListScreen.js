@@ -1,19 +1,20 @@
-/* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
 /* eslint-disable no-underscore-dangle */
-import { createProduct, deleteProduct, getProducts } from "../api";
-import DashboardMenu from "../components/DashboardMenu";
-import { hideLoading, rerender, showLoading, showMessage } from "../utils";
+import DashboardMenu from '../components/DashboardMenu';
+import { getProducts, createProduct, deleteProduct } from '../api';
+import { showLoading, hideLoading, rerender, showMessage } from '../utils';
 
 const ProductListScreen = {
-    after_render: () => {
-        document.getElementById('create-product-button')
-        .addEventListener('click', async () => {
-            const data = await createProduct();
-            document.location.hash = `/product/${data.product._id}/edit`;
+  after_render: () => {
+    document
+      .getElementById('create-product-button')
+      .addEventListener('click', async () => {
+        const data = await createProduct();
+        document.location.hash = `/product/${data.product._id}/edit`;
       });
-      const editButtons = document.getElementsByClassName('edit-button');
-      Array.from(editButtons).forEach((editButton) => {
-        editButton.addEventListener('click', () => {
+    const editButtons = document.getElementsByClassName('edit-button');
+    Array.from(editButtons).forEach((editButton) => {
+      editButton.addEventListener('click', () => {
         document.location.hash = `/product/${editButton.id}/edit`;
       });
     });
@@ -21,6 +22,7 @@ const ProductListScreen = {
     Array.from(deleteButtons).forEach((deleteButton) => {
       deleteButton.addEventListener('click', async () => {
         // eslint-disable-next-line no-restricted-globals
+        // eslint-disable-next-line no-alert
         if (confirm('Are you sure to delete this product?')) {
           showLoading();
           const data = await deleteProduct(deleteButton.id);
@@ -33,8 +35,8 @@ const ProductListScreen = {
         }
       });
     });
-    },
-    render: async () => {
+  },
+  render: async () => {
     const products = await getProducts();
     return `
     <div class="dashboard">
