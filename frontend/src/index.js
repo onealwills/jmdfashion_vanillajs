@@ -15,6 +15,7 @@ import ShippingScreen from './screens/ShippingScreen';
 import SigninScreen from './screens/SigninScreen';
 import { hideLoading, parseRequestUrl, showLoading } from './utils';
 import OrderListScreen from './screens/OrderListScreen';
+import Aside from './components/Aside';
 
 const routes = {
   '/': HomeScreen,
@@ -47,6 +48,11 @@ const router = async () => {
   const header = document.getElementById('header-container');
   header.innerHTML = await Header.render();
   Header.after_render();
+
+  
+  const aside = document.getElementById('aside-container');
+  aside.innerHTML = await Aside.render();
+  await Aside.after_render();
 
   const main = document.getElementById('main-container');
   main.innerHTML = await screen.render();
