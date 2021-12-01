@@ -21,6 +21,7 @@ productRouter.get(
     res.send(products);
   })
 );
+
 productRouter.get(
   '/:id',
   expressAsyncHandler(async (req, res) => {

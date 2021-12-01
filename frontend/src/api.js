@@ -5,11 +5,14 @@ import { apiUrl } from "./config";
 import { getUserInfo } from "./localStorage";
 
 
-export const getProducts = async () => {
+export const getProducts = async ({ searchKeyword = ''}) => {
     try{
-        // eslint-disable-next-line no-unused-vars
+
+      let querystring = '?';
+      // eslint-disable-next-line no-unused-vars
+      if (searchKeyword) querystring += `searchKeyword=${searchKeyword}&`;
         const response = await axios({
-            url: `${apiUrl}/api/products`,
+            url: `${apiUrl}/api/products${querystring}`,
             method : 'GET',
             headers : {
                 'Content-Type': 'application/json',
