@@ -10,7 +10,7 @@ const Header = {
     <button id="aside-open-button">
       &#9776;
     </button>
-    <a href="/#/">jsamazona</a>
+    <a href="/#/">jmdFashion</a>
   </div>
   <div class="search">
   <form class="search-form"  id="search-form">
@@ -35,7 +35,7 @@ const Header = {
         e.preventDefault();
         const searchKeyword = document.getElementById('q').value;
         document.location.hash = `/?q=${searchKeyword}`;
-      })
+      });
 
     document
       .getElementById('aside-open-button')
