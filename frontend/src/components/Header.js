@@ -37,11 +37,11 @@ const Header = {
         document.location.hash = `/?q=${searchKeyword}`;
       })
 
-    // document
-    //   .getElementById('aside-open-button')
-    //   .addEventListener('click', async () => {
-    //     document.getElementById('aside-container').classList.add('open');
-    //   });
+    document
+      .getElementById('aside-open-button')
+      .addEventListener('click', async () => {
+        document.getElementById('aside-container').classList.add('open');
+      });
   },
 };
 export default Header;
