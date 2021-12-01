@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable quotes */
-import { getProducts } from '../api';
+import { searchProducts } from '../api';
 import Rating from '../components/Rating';
 import { parseRequestUrl } from '../utils';
 
@@ -9,7 +9,7 @@ import { parseRequestUrl } from '../utils';
 const HomeScreen = {
   render: async () => {
     const { value } = parseRequestUrl();
-    const products = await getProducts({ searchKeyword: value });
+    const products = await searchProducts({ searchKeyword: value });
     if (products.error) {
       return `<div class="error">${products.error}</div>`;
     }
